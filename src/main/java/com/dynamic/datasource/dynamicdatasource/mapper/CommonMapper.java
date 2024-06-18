@@ -1,6 +1,7 @@
 package com.dynamic.datasource.dynamicdatasource.mapper;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.dynamic.datasource.dynamicdatasource.aspect.Ds;
 import com.dynamic.datasource.dynamicdatasource.common.DataSourceInfo;
 import com.dynamic.datasource.dynamicdatasource.model.Car;
 import com.dynamic.datasource.dynamicdatasource.model.User;
@@ -22,6 +23,7 @@ import java.util.List;
 @Mapper
 public interface CommonMapper {
 
+    @Ds
     @Select("select * from car")
     List<Car> getCarInfo();
 
@@ -35,6 +37,7 @@ public interface CommonMapper {
         return dataSourceInfo;
     }
 
+    @Ds("slave")
     @Select("select * from user")
     List<User> getUserInfo();
 
